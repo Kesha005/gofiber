@@ -1,36 +1,14 @@
 package main
 
-import "github.com/gin-gonic/gin"
 
-
+import(
+	"github.com/gofiber/fiber/v2"
+)
 
 func main(){
-	app := gin.Default()
-
-	app.GET("/", index)
-	app.GET("/contact",contact)
-	app.GET("/about",about)
-
-	app.Run()
-
-}
-
-
-func index(c *gin.Context){
-	c.JSON(200,gin.H{
-		"index":"Index page",
+	route:=fiber.New()
+	route.Get("/",func (ctx *fiber.Ctx)error  {
+		return ctx.SendString("Hello world")
 	})
-}
-
-func contact(c *gin.Context){
-	c.JSON(200,gin.H{
-		"contact":"contact_page",
-	})
-}
-
-
-func about(c *gin.Context){
-	c.JSON(200,gin.H{
-		"about":"about page",
-	})
+	route.Listen(":80")
 }
