@@ -1,4 +1,4 @@
-module first_gin
+module kesha/fiber
 
 go 1.19
 
